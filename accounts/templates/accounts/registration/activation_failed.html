@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Activation failed
+{% endblock %}
+
+{% block content %}
+    <div class="alert alert-info">
+        Account activation failed.
+        {{ activation_error.message }}
+    </div>
+    <a href="{% url 'registration_register' %}">Sign Up Again</a>
+{% endblock content %}

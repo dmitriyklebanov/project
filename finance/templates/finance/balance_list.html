@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Balances
+{% endblock %}
+
+{% block content %}
+    {% for balance in balance_list %}
+        <article class="content-section">
+          <div>
+            <h2><a href="{% url 'balance_detail' balance.id %}">{{ balance.name }}</a></h2>
+              <div>
+                  <h5>Amount: <span class="text text-info">{{ balance.amount }} <small class="text-muted">{{ balance.currency}}</small></span></h5>
+              </div>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content %}

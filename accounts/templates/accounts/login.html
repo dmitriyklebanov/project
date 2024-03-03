@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Sign In to Financial Manager
+{% endblock %}
+
+{% block content %}
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Sign In to Financial Manager</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Sign In</button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                <div>
+                    Don't Have An Account? <a class="ml-2" href="{% url 'registration_register' %}">Sign Up Now</a>
+                </div>
+                <div>
+                    Forgot password? <a class="ml-2" href="{% url 'password_reset_request' %}">Reset Password</a>
+                </div>
+            </small>
+        </div>
+    </div>
+{% endblock content %}

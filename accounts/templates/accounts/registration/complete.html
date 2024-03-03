@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Registration complete
+{% endblock %}
+
+{% block content %}
+    <div class="alert alert-info">
+        Thank you for registration. An e-mail with activation link has been sent to you.
+    </div>
+    <a href="{% url 'login' %}">Sign In Here</a>
+{% endblock content %}

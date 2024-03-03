@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Balance {{ object.name }}
+{% endblock %}
+
+{% block content %}
+    <article class="content-section">
+          <div>
+              <h2>Balance: {{ object.name }}</h2>
+              <h5>Amount: <span class="text text-info">{{ object.amount }} <small class="text-muted">{{ object.currency}}</small></span></h5>
+                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'balance_update' object.id %}">Update</a>
+                <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'balance_delete' object.id %}">Delete</a>
+          </div>
+    </article>
+    {% include 'finance/payment_table.html' %}
+{% endblock content %}

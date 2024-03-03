@@ -1,0 +1,13 @@
+.vscode/
+
+.venv/
+__pycache__/
+.pytest_cache/
+.coverage
+build/
+dist/
+.DS_Store
+
+**/logs/**
+/media/*
+!/media/default/

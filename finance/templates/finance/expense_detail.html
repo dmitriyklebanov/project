@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Expense {{ object.name }}
+{% endblock %}
+
+{% block content %}
+    <article class="content-section">
+          <div>
+              <h2>Expense: {{ object.name }}</h2>
+                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'expense_update' object.id %}">Update</a>
+                <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'expense_delete' object.id %}">Delete</a>
+          </div>
+    </article>
+    {% include 'finance/payment_table.html' %}
+{% endblock content %}

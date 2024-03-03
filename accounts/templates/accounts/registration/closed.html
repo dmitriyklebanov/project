@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Closed
+{% endblock %}
+
+{% block content %}
+    <div class="alert alert-info">
+        Registration has been closed.
+    </div>
+    <a href="{% url 'login' %}">Sign In Here</a>
+{% endblock content %}

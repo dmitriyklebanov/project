@@ -1,0 +1,76 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>{% block title %}{% endblock %}</title>
+
+    <link rel="stylesheet", type="text/css" href="{% static "bootstrap/css/bootstrap.min.css" %}">
+    <link rel="stylesheet", type="text/css" href="{% static "default/css/main.css" %}">
+    {% block styles %}{% endblock %}
+</head>
+<body>
+    {% block navbar %}
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
+        <div class="container">
+          <a class="navbar-brand" href="{% url 'about' %}">Financial Manager</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <a class="nav-link" href="{% url 'balance_list' %}">Balances</a>
+              <a class="nav-link" href="{% url 'expense_list' %}">Expenses</a>
+              <a class="nav-link" href="{% url 'payment_list' %}">Payments</a>
+              <a class="nav-link" href="{% url 'transfer_list' %}">Transfers</a>
+            </ul>
+          </div>
+          <div class="navbar-nav">
+              {% if user.is_authenticated %}
+                <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+                <a class="nav-item nav-link" href="{% url 'logout' %}">Sign Out</a>
+              {% else %}
+                <a class="nav-item nav-link" href="{% url 'login' %}">Sign In</a>
+                <a class="nav-item nav-link" href="{% url 'registration_register' %}">Sign Up</a>
+              {% endif %}
+          </div>
+        </div>
+        </nav>
+    {% endblock %}
+
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-8">
+            {% if messages %}
+                {% for message in messages %}
+                     <div class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            {% block content %}{% endblock %}
+        </div>
+        <div class="col-md-4">
+            <div class="content-section">
+            <h3>Actions</h3>
+                <ul class="list-group">
+                  <a class="mt-2 btn btn-clock btn-outline-primary" href="{% url 'balance_create' %}">Create balance</a>
+                  <a class="mt-2 btn btn-clock btn-outline-primary" href="{% url 'expense_create' %}">Add expense</a>
+                  <a class="mt-2 btn btn-clock btn-outline-primary" href="{% url 'payment_create' %}">New payment</a>
+                  <a class="mt-2 btn btn-clock btn-outline-primary" href="{% url 'transfer_create' %}">Make transfer</a>
+              </ul>
+            </p>
+            </div>
+        </div>
+      </div>
+    </main>
+
+    <script type="text/javascript" src="{% static "jquery/jquery-3.4.1.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

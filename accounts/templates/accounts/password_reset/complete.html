@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}
+    New Password has been set for Financial Manager
+{% endblock %}
+
+{% block content %}
+    <div class="alert alert-info">
+        Your password has been set.
+    </div>
+    <a href="{% url 'login' %}">Sign In Here</a>
+{% endblock content %}
